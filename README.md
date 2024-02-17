@@ -1,4 +1,4 @@
- <div align="center"><h1>Word Cloud and Sentiment Analysis of Singapore Budget 2023</h1></div
+ <div align="center"><h1>Word Cloud and Sentiment Analysis of Singapore Budget 2021</h1></div
 
 ---
 __Tools used: R Programming__
@@ -7,7 +7,7 @@ __Tools used: R Programming__
 
 __Description:__
 <br>
-In this data analyst project, I leverage the power of R programming to analyze and visualize sentiments expressed in the Singapore Budget 2023. The project aims to provide valuable insights into public perception and sentiment surrounding key budgetary decisions.
+In this data analyst project, I leverage the power of R programming to analyze and visualize sentiments expressed in the Singapore Budget 2021. The project aims to provide valuable insights into public perception and sentiment surrounding key budgetary decisions.
 
 __Objective:__
 <br>
