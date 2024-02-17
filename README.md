@@ -24,12 +24,17 @@ __Findings:__
 
 From the 10 most frequent words, we can infer the key message from the budget is that there “Will” be “Support” for“Business” and “Worker” because of “Covid”
 
+<br>
 
 <div align="center"><img src="images/emt_valance.png"/></div>
 
 The graph reflect the sentiment score of each progressive sentence from the start of the budget speech (left of the x-axis) to the end of the budget speech (right of the x-axis). From the chart, the valence of the emotion contained in the speech is generally positive throughout.
 
+<br>
+
 <div align="center"><img src="images/emt_in_txt.png" style="max-width: 50%; height: auto;"></div>
+
+<br>
 
 <div align="center"><img src="images/emt_in_txt_percentage.png"/></div>
 
