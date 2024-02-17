@@ -1,1 +1,108 @@
+# for text mining
+library("tm")
+# for colour palettes
+library("RColorBrewer")
+# for text stemming
+library("SnowballC")
+# for creating wordcloud
+library("wordcloud")
+library("wordcloud2")
+# for sentiment analysis
+library("syuzhet")
+# for plotting charts
+library("ggplot2")
+# for converting pdf to text
+library("pdftools")
+
+# Convert pdf file to text file
+pdf.file <- "https://www.mof.gov.sg/docs/librariesprovider3/budget2021/download/pdf/fy2021_budget_statement.pdf"
+download.file(pdf.file, destfile = "Budget2021.pdf", mode = "wb")
+Budget21pdf.txt <- pdf_text("Budget2021.pdf")
+
+# Load the txt file as a corpus and inspect first 5 lines
+Budget21Txt <- Corpus(VectorSource(Budget21pdf.txt))
+inspect(Budget21Txt[1:5])
+
+# Cleaning the text file and create a word term frequency table
+
+# Convert the text to lower case
+Budget21Txt <- tm_map(Budget21Txt, content_transformer(tolower))
+
+# Remove numbers
+Budget21Txt <- tm_map(Budget21Txt, removeNumbers)
+
+# Remove english common stopwords
+Budget21Txt <- tm_map(Budget21Txt, removeWords, stopwords("english"))
+
+# Remove additional specific stop word to optimise the wordcloud visualisation.
+Budget21Txt <- tm_map(Budget21Txt, removeWords, c("s", "take","first", "last", "year","also","page")) 
+
+# Remove punctuations
+Budget21Txt <- tm_map(Budget21Txt, removePunctuation)
+
+# Eliminate extra white spaces
+Budget21Txt <- tm_map(Budget21Txt, stripWhitespace)
+
+# Text stemming - which reduces words to their root form
+Budget21Txt <- tm_map(Budget21Txt, stemDocument)
+
+# Build a term-document matrix
+Budget21Txt_dtm <- TermDocumentMatrix(Budget21Txt)
+dtm_m <- as.matrix(Budget21Txt_dtm)
+
+# Sort words by decreasing order of frequency
+dtm_v <- sort(rowSums(dtm_m),decreasing=TRUE)
+dtm_d <- data.frame(word = names(dtm_v),freq=dtm_v, options(width = 200))
+
+# Display the top 10 most frequent words
+head(dtm_d, 10)
+
+#Create a bar chart of the 10 most frequent words
+barplot(dtm_d[1:10,]$freq, las = 2, names.arg = dtm_d[1:10,]$word,
+        col ="lightblue", main ="Top 10 most frequent words",
+        ylab = "Word Frequencies")
+
+# Generate word cloud
+set.seed(1214)
+wordcloud(words = dtm_d$word, freq = dtm_d$freq, min.freq = 5,
+          max.words=100, random.order=FALSE, rot.per=0.40, 
+          colors=brewer.pal(8, "Dark2"),width= 500, height = 500, scale = c(2,0.5))
+
+# Plot of emotions across the flow the text
+s_v <- get_sentences(Budget21pdf.txt)
+s_v_sentiment <- get_sentiment(s_v)
+plot(
+  s_v_sentiment, 
+  type="l", 
+  main="Sentiment Analysis of Sg Budget 2021", 
+  xlab = "Narrative", 
+  ylab= "Emotional Valence",
+  col = "blue")
+  
+# Sentiment analysis by emotion types 
+sa<-get_nrc_sentiment(Budget21pdf.txt)
+
+#transpose and add across rows for each sentiment type
+tsa<-data.frame(t(sa))
+tsa_new <- data.frame(rowSums(tsa[2:ncol(tsa)]))
+
+#Create sentiment and count table
+names(tsa_new)[1] <- "count"
+tsa_new <- cbind("sentiment" = rownames(tsa_new), tsa_new)
+rownames(tsa_new) <- NULL
+tsa_new2<-tsa_new[1:8,]
+
+#Chart 1 - count of words for each sentiment
+quickplot(sentiment, data=tsa_new2, weight=count, geom="bar",fill=sentiment,ylab="Count",xlab = "Sentiment")+ggtitle("Emotions in Text")+ theme(plot.title = element_text(hjust = 0.5))
+
+
+# Step 10 Chart 2 - count of words in percentage
+colour <- brewer.pal(5, "Set2") 
+barplot(
+  sort(colSums(prop.table(sa[, 1:8]))), 
+  horiz = TRUE, 
+  cex.names = 0.7, 
+  las = 1, 
+  main = "Emotions in Text", xlab="Percentage",
+  col = colour)
 
