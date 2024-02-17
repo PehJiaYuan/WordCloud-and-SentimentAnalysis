@@ -27,8 +27,8 @@ From the 10 most frequent words, we can infer the key message from the budget is
 
 The graph reflect the sentiment score of each progressive sentence from the start of the budget speech (left of the x-axis) to the end of the budget speech (right of the x-axis). From the chart, the valence of the emotion contained in the speech is generally positive throughout.
 
-<div align="center"><img src="images/emt_in_text.png"/></div>
-<div align="center"><img src="images/emt_in_text_percentage.png"/></div>
+<div align="center"><img src="images/emt_in_txt.png"/></div>
+<div align="center"><img src="images/emt_in_txt_percentage.png"/></div>
 
 Overall, the budget speech contains expressions associate especially with Trust, Anticipation and Joy. 
 
