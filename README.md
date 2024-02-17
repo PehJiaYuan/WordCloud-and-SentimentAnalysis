@@ -1,4 +1,4 @@
- <div align="center"><h1>WordCoud and SentimentAnalysis of Singapore Budget 2023</h1></div
+ <div align="center"><h1>Word Cloud and Sentiment Analysis of Singapore Budget 2023</h1></div
 
 ---
 __Tools used: R Programming__
