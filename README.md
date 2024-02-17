@@ -16,6 +16,8 @@ The primary objective of this project is to employ R programming for in-depth se
 __Process:__
 For data cleaning, the texts are converted to lower case, numbers removed and common words removed, punctuation removed, white space removed and words reduced to their root form (stemming). Additionally, I also removed words such as 'take', 'year', 'also' etc. to optimise the wordcloud visualisation.
 
+---
+
 __Findings:__
 
 <div align="center"><img src="images/wrd_cloud.png"/></div>
