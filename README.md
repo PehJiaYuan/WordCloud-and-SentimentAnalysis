@@ -21,6 +21,7 @@ For data cleaning, the texts are converted to lower case, numbers removed and co
 __Findings:__
 
 <div align="center"><img src="images/wrd_cloud.png"/></div>
+<div align="center"><img src="images/top10_words.png"/></div>
 
 From the 10 most frequent words, we can infer the key message from the budget is that there “Will” be “Support” for“Business” and “Worker” because of “Covid”
 
