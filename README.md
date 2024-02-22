@@ -24,7 +24,8 @@ __Findings:__
 <br>
 <div align="center"><img src="images/top10_words.png"/></div>
 
-From the 10 most frequent words, we can infer the key message from the budget is that there “Will” be “Support” for“Business” and “Worker” because of “Covid”
+From the 10 most frequent words, we can infer the key message from the budget is that there “Will” be “Support” for“Business” and “Worker” because of “Covid”. This is further supported by additional literature research whereby 2021 was a period where the COVID-19 cases were still high in Singapore and many businesses were sufferring from the effects of cicuit breaker and dining in restrictions placed by the government. 
+
 
 <br>
 
@@ -40,7 +41,8 @@ The graph reflect the sentiment score of each progressive sentence from the star
 
 <div align="center"><img src="images/emt_in_txt_percentage.png"/></div>
 
-Overall, the budget speech contains expressions associate especially with Trust, Anticipation and Joy. 
+Overall, the budget speech encompasses sentiments primarily linked to themes of Trust, Anticipation, and Joy.
+
 
 
 
